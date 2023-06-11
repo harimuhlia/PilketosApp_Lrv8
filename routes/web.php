@@ -36,6 +36,8 @@ Route::middleware(['auth', 'ceklevel:Administrator,Pemilih'])->group(function ()
 });
 
 Route::middleware(['auth', 'ceklevel:Administrator'])->group(function () {
+    Route::post('/importexcel', [PemilihController::class, 'importexcel'])->name('importexcel');
+
     Route::resource('kandidat', KandidatController::class);
     Route::resource('datakelas', KelasController::class);
     Route::resource('datapemilih', PemilihController::class);

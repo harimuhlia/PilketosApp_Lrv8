@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\PemilihImport;
 use App\Models\Kelas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PemilihController extends Controller
 {
@@ -74,16 +77,6 @@ class PemilihController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // $pemilih = User::find($id);
-        // $pemilih->name=$request->get('name');
-        // $pemilih->email=$request->get('email');
-        // $pemilih->roles=$request->get('roles');
-        // $pemilih->nis=$request->get('nis');
-        // $pemilih->kelas=$request->get('kelas');
-        // $pemilih->status=$request->get('status');
-        // $pemilih->password=Hash::make($request['password']);
-        // $pemilih->update();
-
         if ($request->password) {
         User::find($id)->update([
         'name' => $request->name,
@@ -118,4 +111,34 @@ class PemilihController extends Controller
         $pemilih->delete();
         return redirect()->back()->with('success', 'Alhamdulillah Berhasil Dihapus');
     }
+
+    public function importexcel(Request $request) 
+	{
+        try {
+            // validasi
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+ 
+		// menangkap file excel
+		$file = $request->file('file');
+ 
+		// membuat nama file unik
+		$nama_file = rand().$file->getClientOriginalName();
+ 
+		// upload ke folder file pemilih di dalam folder public
+		$file->move('data_pemilih',$nama_file);
+ 
+		// import data
+        // Excel::import(new DatasiswaImport, $request->file('file'));
+		Excel::import(new PemilihImport, public_path('/data_pemilih/'.$nama_file));
+
+        return redirect()->back()
+            ->with('success', 'Import data Pemilih berhasil.');
+        } catch (ValidationException $e) {
+            //throw $th;
+            return back()->withErrors($e->getMessage())->withInput();
+        }
+	}
+
 }

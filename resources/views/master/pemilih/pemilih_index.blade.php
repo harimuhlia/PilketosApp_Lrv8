@@ -24,7 +24,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('importexcel') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="modal-body">
         <div class="form-gorup">
@@ -44,6 +44,15 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+              @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
