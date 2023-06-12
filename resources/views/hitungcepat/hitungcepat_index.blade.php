@@ -91,7 +91,7 @@
           <tr>
             <td colspan="3"><p class="text-center"><strong>GRAND TOTAL</strong></p></td>
             <td><h3><p class="text-center">{{ $totalpemilih }}</p></h3></td>
-            <td><h3><p class="text-center">{{ $totalpemilih/$jumlah*100 }} %</p></h3></td>
+            <td><h3><p class="text-center">{{ $totalpemilih == 0 ? 0 : $totalpemilih/$jumlah * 100 }} %</p></h3></td>
           </tr>
           <div class="alert alert-danger" role="alert">
             DISCLAIMER:
