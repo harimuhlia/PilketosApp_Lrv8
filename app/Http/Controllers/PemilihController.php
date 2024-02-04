@@ -121,17 +121,17 @@ class PemilihController extends Controller
 		]);
  
 		// menangkap file excel
-		$file = $request->file('file');
+		// $file = $request->file('file');
  
 		// membuat nama file unik
-		$nama_file = rand().$file->getClientOriginalName();
+		// $nama_file = rand().$file->getClientOriginalName();
  
 		// upload ke folder file pemilih di dalam folder public
-		$file->move('data_pemilih',$nama_file);
+		// $file->move('data_pemilih',$nama_file);
  
 		// import data
-        // Excel::import(new DatasiswaImport, $request->file('file'));
-		Excel::import(new PemilihImport, public_path('/data_pemilih/'.$nama_file));
+        Excel::import(new PemilihImport, $request->file('file'));
+		// Excel::import(new PemilihImport, public_path('/data_pemilih/'.$nama_file));
 
         return redirect()->back()
             ->with('success', 'Import data Pemilih berhasil.');
