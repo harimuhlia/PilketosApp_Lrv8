@@ -149,7 +149,7 @@
                             <option value="Pemilih"{{ $item->roles == "Pemilih" ? 'selected' : "" }}>Pemilih</option>
                           </select>
                           <label for="namaEkskul">Status Pemilih</label>
-                          <select class="form-control" id="status" name="status">
+                          <select class="form-control" id="status" disabled name="status">
                             <option value="BELUM"{{ $item->status == "BELUM" ? 'selected' : "" }}>BELUM</option>
                             <option value="SUDAH"{{ $item->status == "SUDAH" ? 'selected' : "" }}>SUDAH</option>
                           </select>
