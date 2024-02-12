@@ -28,7 +28,7 @@
 <script src="{{ asset('Template')}}/plugins/daterangepicker/daterangepicker.js"></script>
 
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="{{ asset('Template')}}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
 <!-- Summernote -->
 <script src="{{ asset('Template')}}/plugins/summernote/summernote-bs4.min.js"></script>

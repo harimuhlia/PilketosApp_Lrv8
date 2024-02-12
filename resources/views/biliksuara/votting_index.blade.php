@@ -28,7 +28,7 @@
     </div>
     <form align="center" id="logout-form" action="{{ route('logout') }}" method="POST" onclick="event.preventDefault();
     document.getElementById('logout-form').submit();" class="nav-link">
-    <button type="button" class="btn btn-danger btn-large" id="logout-form"><i class="fas fa-sign-out-alt"></i> Silakan Logout</button>
+    <button type="button" class="btn btn-danger btn-large" id="logout-form"><i class="fas fa-sign-out-alt"></i> Silakan LOGOUT</button>
     {{ csrf_field() }}
     </form>
     @endif
