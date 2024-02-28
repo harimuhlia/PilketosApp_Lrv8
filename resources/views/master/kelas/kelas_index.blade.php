@@ -26,8 +26,8 @@
         <thead>
         <tr>
           <th>No</th>
-          <th>Kode Ekskul</th>
-          <th>Nama Ekskul</th>
+          <th>Kode Kelas</th>
+          <th>Nama Kelas</th>
           <th>Action</th>
         </tr>
         </thead>
