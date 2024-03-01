@@ -6,6 +6,7 @@ use App\Imports\PemilihImport;
 use App\Models\Kelas;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,10 +16,26 @@ class PemilihController extends Controller
     /**
      * Display a listing of the resource.
      */
+//     public function index(Request $request)
+// {
+//     $kelaspemilih = Kelas::all();
+//     $pagination  = 10;
+//     $pemilih    = User::when($request->keyword, function ($query) use ($request) {
+//         $query
+//         ->where('name', 'like', "%{$request->keyword}%");
+//     })->orderBy('created_at', 'desc')->paginate($pagination);
+
+//     $pemilih->appends($request->only('keyword'));
+
+//     return view('master.pemilih.pemilih_index', compact('pemilih', 'kelaspemilih'));
+//  }
+
     public function index()
     {
         $kelaspemilih = Kelas::all();
         $pemilih = User::all();
+        // $pemilih = User::paginate(5);
+
         return view('master.pemilih.pemilih_index', compact('pemilih', 'kelaspemilih'));
     }
 
@@ -27,7 +44,9 @@ class PemilihController extends Controller
      */
     public function create()
     {
-        //
+        $kelaspemilih = Kelas::all();
+        $pemilih = User::all();
+        return view('master.pemilih.pemilih_tambah', compact('pemilih', 'kelaspemilih'));
     }
 
     /**
@@ -53,7 +72,7 @@ class PemilihController extends Controller
         $pemilih->password =Hash::make($request['password']);
         $pemilih->save();
         
-        return redirect()->back()->with('success', 'Alhamdulillah Berhasil Dibuat');
+        return redirect('/datapemilih')->with('success', 'Alhamdulillah Berhasil Dibuat');
     }
 
     /**
@@ -61,7 +80,8 @@ class PemilihController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pemilih = User::findOrFail($id);
+        return view('master.pemilih.pemilih_show', compact('pemilih'));
     }
 
     /**
@@ -69,7 +89,9 @@ class PemilihController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kelaspemilih = Kelas::all();
+        $pemilih = User::findOrFail($id);
+        return view('master.pemilih.pemilih_edit', compact('pemilih', 'kelaspemilih'));
     }
 
     /**
@@ -98,17 +120,17 @@ class PemilihController extends Controller
         ]);
         }
 
-        return redirect()->back()
-            ->with('success', 'Alhamdulillah Berhasil Dibuat');
+        return redirect('/datapemilih')->with('success', 'Alhamdulillah Berhasil Diedit');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $pemilih = User::findOrFail($id);
+        $pemilih = User::find($id);
         $pemilih->delete();
+
         return redirect()->back()->with('success', 'Alhamdulillah Berhasil Dihapus');
     }
 

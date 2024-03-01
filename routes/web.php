@@ -42,4 +42,6 @@ Route::middleware(['auth', 'ceklevel:Administrator'])->group(function () {
     Route::resource('datakelas', KelasController::class);
     Route::resource('datapemilih', PemilihController::class);
     Route::resource('kotaksuara', KotaksuaraController::class);
+
+
 });
