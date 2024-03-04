@@ -68,7 +68,7 @@
               @endif
               <td>
                 <div class="d-flex">
-                    <a href="{{ route('datapemilih.show',$item->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                  <a href="{{ route('datapemilih.show',$item->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
                     <a href="{{ route('datapemilih.edit',$item->id) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                     <form method="POST" action="{{ route('datapemilih.destroy', $item->id) }}">
                         @method('DELETE')
@@ -77,17 +77,6 @@
                     </form>
                 </div>
               </td>
-            {{-- </td>
-            <td>
-              <a href="datapemilih/{{ $item->id }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
-              <a href="datapemilih/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-              <a href="datapemilih/delete/{{ $item->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan memilih Kandidat {{ $item->name }} ?')"><i class="fas fa-trash-alt"></i></a>
-            </td> --}}
-            {{-- <td>
-              <a href="datapemilih/{{ $item->id }}" class="badge bg-primary"><i class="fas fa-eye"></i></a>
-              <a href="datapemilih/{{ $item->id }}/edit" class="badge bg-warning"><i class="fas fa-edit"></i></a>
-              <a href="datapemilih/{{ $item->id }}/destroy" class="badge bg-danger" onclick="return confirm('Yakin akan memilih Kandidat {{ $item->name }} ?')"><i class="fas fa-trash-alt"></i></a>
-            </td> --}}
           </tr>
           </div>
         @endforeach

@@ -39,7 +39,6 @@
                         <option value="BELUM"{{ $pemilih->status == "BELUM" ? 'selected' : "" }}>BELUM</option>
                         <option value="SUDAH"{{ $pemilih->status == "SUDAH" ? 'selected' : "" }}>SUDAH</option>
                       </select>
-                      <label for="password">Password</label>
                       <input id="password" type="password" class="form-control" name="password" class="@error('password') is-invalid @enderror" placeholder="Password">
                     </div>
                 </div>

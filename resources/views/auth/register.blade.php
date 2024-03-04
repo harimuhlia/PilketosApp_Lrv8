@@ -1,4 +1,6 @@
-@extends('layouts.app')
+<h1 align="center">MAAF HALAMAN DITUTUP</h1>
+
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -115,4 +117,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
