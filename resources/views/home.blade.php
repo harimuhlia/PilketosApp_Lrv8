@@ -89,15 +89,11 @@
             </div>
             <!-- /.card -->
           </div>
-
+@if (Auth()->User()->roles == 'Administrator')
 <div class="container">
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">Tabel Seluruh Data Pemilih</h3>
-      <div class="card-tools">
-        <a href="" class="btn btn-success btn-sm"><i class="fas fa-upload" title="Tambah Data"></i> Import</a>
-        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default"><i class="fas fa-plus" title="Tambah Data"></i> Tambah Data</a>
-      </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -143,6 +139,11 @@
   </div>
   <!-- /.card -->
 </div>
+@else
+    
+@endif
+
+@include('sweetalert::alert')
 @endsection
 
 @section('javascript')
