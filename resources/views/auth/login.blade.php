@@ -1,83 +1,123 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<title>Pilketos | Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="{{ asset('Template')}}/loginform/css/style.css">
-	</head>
-	<body>
-	<section class="ftco-section">
-		<div class="container">
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-			<div class="row justify-content-center">
-				<div class="col-md-12 col-lg-10">
-					<div class="wrap d-md-flex">
-						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
-							<div class="text w-100">
-								<h2>Selamat Datang!</h2>
-								<p>Di Aplikasi Pemilihan Ketua OSIS (PilketosApp) SMK Negeri 5 Kabupaten Tangerang</p>
-                                
-								<a href="#" class="btn btn-white btn-outline-white">Daftar</a>
-							</div>
-			      </div>
-						<div class="login-wrap p-4 p-lg-5">
-			      	<div class="d-flex">
-			      		<div class="w-100">
-			      			<h3 class="mb-1">Silakan LOGIN</h3>
-			      		</div>
-								<div class="w-100">
-									<p class="social-media d-flex justify-content-end">
-										<a href="https://smkn5kabtangerangmauk.sch.id/" target="_blank" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-globe"></span></a>
-										<a href="https://www.instagram.com/smkn5kabtang/" target="_blank" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a>
-									</p>
-								</div>
-			      	</div>
-						<form method="POST" action="{{ route('login') }}" class="signin-form">
-                            @csrf
-                        <div class="form-group mb-1">
-                            <label class="label" for="name">NIS Sekolah</label>
-                            <input id="nis" type="text" class="form-control" name="nis" placeholder="Masukan NIS Sekolah" required>
-                        </div>
+<head>
+	<title>Login | Aplikasi Pemilihan Ketua OSIS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    @csrf
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{{ asset('Template') }}/login_v1/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Template') }}/login_v1//vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Template') }}/login_v1//fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Template') }}/login_v1//vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ asset('Template') }}/login_v1//vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Template') }}/login_v1//vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Template') }}/login_v1//css/util.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('Template') }}/login_v1//css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="{{ asset('Template') }}/login_v1/images/logon5.png" alt="IMG">
+				</div>
+
+				<form method="POST" action="{{ route('login') }}" class="login100-form validate-form">
+                    @csrf
+					<span class="login100-form-title">
+						Silakan Login
+					</span>
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="number" id="nis" name="nis" placeholder="Masukan NIS">
                         @error('nis')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                      @enderror
-		            <div class="form-group mb-2">
-		            	<label class="label" for="password">Password</label>
-		              <input type="password" class="form-control" name="password" placeholder="Masukan Password" required>
-		            </div>
-                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary submit px-3">Masuk</button>
-		            </div>
-		          </form>
-		        </div>
-		      </div>
-				</div>
+                        @enderror
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" id="password" name="password" placeholder="Masukan Password">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-key" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Login
+						</button>
+					</div>
+					<div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="#">
+							Username / Password?
+						</a>
+					</div>
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="#">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
 			</div>
 		</div>
-	</section>
-    <script src="{{ asset('Template')}}/loginform/js/jquery.min.js"></script>
-    <script src="{{ asset('Template')}}/loginform/js/popper.js"></script>
-    <script src="{{ asset('Template')}}/loginform/js/bootstrap.min.js"></script>
-    <script src="{{ asset('Template')}}/loginform/js/main.js"></script>
-	</body>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="{{ asset('Template') }}/login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ asset('Template') }}/login_v1/vendor/bootstrap/js/popper.js"></script>
+	<script src="{{ asset('Template') }}/login_v1/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ asset('Template') }}/login_v1/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ asset('Template') }}/login_v1/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{{ asset('Template') }}/login_v1/js/main.js"></script>
+
+</body>
 </html>
 
 
