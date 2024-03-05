@@ -5,6 +5,7 @@
 @section('content')
 <div class="container">
   <div class="row" data-aos="fade-up" data-aos-offset="-500">
+      <a href="{{ route('vottingkandidat.index') }}" data-aos="fade-up" data-aos-offset="-500" class="btn btn-primary"><i class="fa fa-arrow-left"></i> KEMBALI KE DAFTAR KANDIDAT</a>
     <div class="col-sm-12">
       <div class="d-sm-flex justify-content-between align-items-center mb-2">
       </div>
@@ -44,7 +45,7 @@
               </td>
             </tr>
           </table>
-          <a href="{{ route('vottingkandidat.index') }}" data-aos="fade-up" data-aos-offset="-500" class="btn btn-primary"><i class="fa fa-arrow-left"></i> KEMBALI KE DAFTAR KANDIDAT</a>
+          
         </div>
       </div>
   </div>

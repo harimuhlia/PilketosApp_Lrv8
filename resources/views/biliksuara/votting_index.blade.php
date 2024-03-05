@@ -11,8 +11,7 @@
               <div class="card">
                   <img src="{{ asset('fotopasangan/'.$kddt->foto_pasangan) }}" class="card-img-top" alt="{{ $kddt->name }}">
                   <div class="card-body">
-                      <h5 class="card-title">{{ $kddt->name }}</h5>
-                      <p class="card-text">{{ $kddt->description }}</p>
+                      <h5 align="center">{{ $kddt->pasangan_kandidat }}</h5>
                       <form action="{{route('vottingkandidat.store')}}" align="center" method="post">
                           @csrf
                           <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" class="form-control">
